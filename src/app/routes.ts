@@ -22,4 +22,6 @@ export const router = createBrowserRouter([
       { path: "tech-radar", Component: TechRadar },
     ],
   },
-]);
+], {
+  basename: import.meta.env.BASE_URL,
+});
