@@ -258,28 +258,44 @@ export default function Home() {
             {/* Toggle buttons and divider */}
             <div className="absolute top-4 left-4 z-10 flex items-start gap-4">
               <div className="flex flex-col gap-2">
-                <button
-                  onClick={toggleChatPanel}
-                  className={`p-2 rounded hover:bg-accent/10 transition-colors ${
-                    showChatPanel ? "bg-accent/10 text-accent" : "bg-card text-muted-foreground shadow-sm"
-                  }`}
-                  title={showChatPanel ? "Hide chat history" : "Show chat history"}
-                  aria-label={showChatPanel ? "Hide chat history" : "Show chat history"}
-                >
-                  <div className="size-[24px]">
-                    {showChatPanel ? <CloseIocn /> : <ArrowMenuOpen />}
+                <div className="relative group/chat-tooltip">
+                  <button
+                    onClick={toggleChatPanel}
+                    className={`p-2 rounded hover:bg-accent/10 transition-colors ${
+                      showChatPanel ? "bg-accent/10 text-accent" : "bg-card text-muted-foreground shadow-sm"
+                    }`}
+                    aria-label={showChatPanel ? "Hide chat history" : "Show chat history"}
+                  >
+                    <div className="size-[24px]">
+                      {showChatPanel ? <CloseIocn /> : <ArrowMenuOpen />}
+                    </div>
+                  </button>
+                  {/* Tooltip */}
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1.5 bg-[#151515] text-white text-xs rounded whitespace-nowrap opacity-0 pointer-events-none group-hover/chat-tooltip:opacity-100 transition-opacity z-20">
+                    {showChatPanel ? "Collapse chat history" : "Expand to view chat history"}
+                    <div className="absolute right-full top-1/2 -translate-y-1/2">
+                      <div className="border-4 border-transparent border-r-[#151515]"></div>
+                    </div>
                   </div>
-                </button>
+                </div>
 
-                <button
-                  className={`p-2 rounded bg-card text-muted-foreground shadow-sm hover:bg-accent/10 transition-colors ${showChatPanel ? 'hidden' : ''}`}
-                  title="Edit"
-                  aria-label="Edit"
-                >
-                  <div className="size-[20px]">
-                    <EditSquare />
+                <div className={`relative group/new-chat-tooltip ${showChatPanel ? 'hidden' : ''}`}>
+                  <button
+                    className="p-2 rounded bg-card text-muted-foreground shadow-sm hover:bg-accent/10 transition-colors"
+                    aria-label="New chat"
+                  >
+                    <div className="size-[20px]">
+                      <EditSquare />
+                    </div>
+                  </button>
+                  {/* Tooltip */}
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1.5 bg-[#151515] text-white text-xs rounded whitespace-nowrap opacity-0 pointer-events-none group-hover/new-chat-tooltip:opacity-100 transition-opacity z-20">
+                    New chat
+                    <div className="absolute right-full top-1/2 -translate-y-1/2">
+                      <div className="border-4 border-transparent border-r-[#151515]"></div>
+                    </div>
                   </div>
-                </button>
+                </div>
               </div>
               
               <div className={`w-px bg-[#c7c7c7] h-full ${showChatPanel ? 'hidden' : ''}`} />

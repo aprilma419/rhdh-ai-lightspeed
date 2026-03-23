@@ -170,7 +170,7 @@ export default function Root() {
           <img
             alt="Red Hat Developer Hub"
             className="absolute inset-0 max-w-none object-contain pointer-events-none size-full"
-            src="/logo.png"
+            src={`${import.meta.env.BASE_URL}logo.png`}
           />
         </div>
       </div>
