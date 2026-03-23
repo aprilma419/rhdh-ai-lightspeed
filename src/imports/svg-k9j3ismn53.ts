@@ -1,0 +1,3 @@
+export default {
+p5f70f80: "M9 21V3H11V21H9ZM13 17V7L18 12L13 17Z",
+}
